@@ -19,3 +19,4 @@ logs/
 
 # Environment
 .env
+.idea/workspace.xml

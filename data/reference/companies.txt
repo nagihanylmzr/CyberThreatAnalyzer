@@ -1,0 +1,23 @@
+Microsoft
+Google
+Cloudflare
+GitHub
+SonicWall
+Checkmarx
+DigiCert
+Discord
+Elastic
+Slack
+Proofpoint
+Kaspersky
+Fortinet
+Okta
+Amazon
+Cisco
+Apple
+IBM
+Oracle
+VMware
+CrowdStrike
+Palo Alto Networks
+Trend Micro

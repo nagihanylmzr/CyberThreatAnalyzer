@@ -1,0 +1,62 @@
+[
+    {
+        "company": "Microsoft",
+        "count": 9
+    },
+    {
+        "company": "GitHub",
+        "count": 4
+    },
+    {
+        "company": "Cloudflare",
+        "count": 3
+    },
+    {
+        "company": "Google",
+        "count": 3
+    },
+    {
+        "company": "Kaspersky",
+        "count": 3
+    },
+    {
+        "company": "SonicWall",
+        "count": 2
+    },
+    {
+        "company": "Apple",
+        "count": 2
+    },
+    {
+        "company": "Oracle",
+        "count": 2
+    },
+    {
+        "company": "Checkmarx",
+        "count": 1
+    },
+    {
+        "company": "DigiCert",
+        "count": 1
+    },
+    {
+        "company": "Discord",
+        "count": 1
+    },
+    {
+        "company": "Elastic",
+        "count": 1
+    },
+    {
+        "company": "Slack",
+        "count": 1
+    },
+    {
+        "company": "Proofpoint",
+        "count": 1
+    },
+    {
+        "company": "Fortinet",
+        "count": 1
+    }
+]

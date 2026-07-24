@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    🛡 CVEs
+</h1>
+
+<p class="text-secondary mb-4">
+    CVEs extracted from collected cyber security news.
+</p>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Top CVEs
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover table-striped mb-0">
+
+            <thead class="table-dark">
+
+            <tr>
+
+                <th width="80">#</th>
+                <th>CVE ID</th>
+                <th width="140">Mentions</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for cve, count in cves %}
+
+            <tr>
+
+                <td>{{ loop.index }}</td>
+
+                <td>{{ cve }}</td>
+
+                <td>
+                    <span class="badge bg-danger">
+                        {{ count }}
+                    </span>
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

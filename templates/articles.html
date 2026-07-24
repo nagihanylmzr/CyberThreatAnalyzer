@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    📰 Articles
+</h1>
+
+<p class="text-secondary mb-4">
+    Cyber security news collected by the crawler.
+</p>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Collected Articles
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover table-striped mb-0">
+
+            <thead class="table-dark">
+
+            <tr>
+
+                <th width="120">Risk</th>
+
+                <th width="180">Source</th>
+
+                <th>Title</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for title, source, risk in articles %}
+
+            <tr>
+
+                <td>
+
+                    {% if risk >= 20 %}
+                        <span class="badge bg-danger">{{ risk }}</span>
+
+                    {% elif risk >= 10 %}
+                        <span class="badge bg-warning text-dark">{{ risk }}</span>
+
+                    {% else %}
+                        <span class="badge bg-success">{{ risk }}</span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>
+
+                    {{ source }}
+
+                </td>
+
+                <td>
+
+                    {{ title }}
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

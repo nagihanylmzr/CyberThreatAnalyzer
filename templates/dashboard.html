@@ -1,0 +1,213 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    🛡 Cyber Threat Analyzer Dashboard
+</h1>
+
+<!-- Statistics Cards -->
+
+<div class="row g-4 mb-5">
+
+    <div class="col-md-4">
+
+        <div class="card bg-primary text-white shadow h-100">
+
+            <div class="card-body">
+
+                <h6 class="text-uppercase">Articles</h6>
+
+                <h1 class="display-4">
+
+                    {{ article_count }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-success text-white shadow h-100">
+
+            <div class="card-body">
+
+                <h6 class="text-uppercase">Companies</h6>
+
+                <h1 class="display-4">
+
+                    {{ company_count }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-md-4">
+
+        <div class="card bg-danger text-white shadow h-100">
+
+            <div class="card-body">
+
+                <h6 class="text-uppercase">CVEs</h6>
+
+                <h1 class="display-4">
+
+                    {{ cve_count }}
+
+                </h1>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Top Lists -->
+
+<div class="row">
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-dark text-white">
+
+                🏢 Top Companies
+
+            </div>
+
+            <ul class="list-group list-group-flush">
+
+                {% for company, count in top_companies %}
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                    {{ company }}
+
+                    <span class="badge bg-primary rounded-pill">
+
+                        {{ count }}
+
+                    </span>
+
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-6 mb-4">
+
+        <div class="card shadow h-100">
+
+            <div class="card-header bg-dark text-white">
+
+                🛡 Top CVEs
+
+            </div>
+
+            <ul class="list-group list-group-flush">
+
+                {% for cve, count in top_cves %}
+
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+
+                    {{ cve }}
+
+                    <span class="badge bg-danger rounded-pill">
+
+                        {{ count }}
+
+                    </span>
+
+                </li>
+
+                {% endfor %}
+
+            </ul>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Highest Risk News -->
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+
+        🚨 Highest Risk News
+
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-striped table-hover mb-0">
+
+            <thead class="table-dark">
+
+            <tr>
+
+                <th style="width:120px;">Risk</th>
+
+                <th>Article</th>
+
+            </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for title, score in top_risk %}
+
+            <tr>
+
+                <td>
+
+                    {% if score >= 21 %}
+
+                        <span class="badge bg-danger">{{ score }}</span>
+
+                    {% elif score >= 11 %}
+
+                        <span class="badge bg-warning text-dark">{{ score }}</span>
+
+                    {% else %}
+
+                        <span class="badge bg-success">{{ score }}</span>
+
+                    {% endif %}
+
+                </td>
+
+                <td>{{ title }}</td>
+
+            </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

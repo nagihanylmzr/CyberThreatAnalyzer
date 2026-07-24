@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Cyber Threat Analyzer</title>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.7/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+
+    <link rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css">
+
+    <style>
+
+        body{
+            margin:0;
+            background:#1f2329;
+            font-family:Arial, Helvetica, sans-serif;
+        }
+
+        .wrapper{
+            display:flex;
+            min-height:100vh;
+        }
+
+        .sidebar{
+
+            width:260px;
+            background:#111418;
+            color:white;
+
+            padding:30px 20px;
+
+            flex-shrink:0;
+        }
+
+        .sidebar h2{
+
+            text-align:center;
+            margin-bottom:40px;
+            font-weight:bold;
+        }
+
+        .sidebar a{
+
+            display:block;
+
+            color:#d0d0d0;
+
+            text-decoration:none;
+
+            padding:14px;
+
+            margin-bottom:12px;
+
+            border-radius:10px;
+
+            transition:.3s;
+        }
+
+        .sidebar a:hover{
+
+            background:#0d6efd;
+
+            color:white;
+        }
+
+        .content{
+
+            flex:1;
+
+            padding:40px;
+
+            background:#24292f;
+
+            color:white;
+        }
+
+        .footer{
+
+            margin-top:60px;
+
+            color:#8c96a0;
+
+            font-size:14px;
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- Sidebar -->
+
+    <div class="sidebar">
+
+        <h2>
+
+            🛡 CTA
+
+        </h2>
+
+        <a href="/">
+
+            <i class="bi bi-speedometer2"></i>
+
+            Dashboard
+
+        </a>
+
+        <a href="/companies">
+
+            <i class="bi bi-building"></i>
+
+            Companies
+
+        </a>
+
+        <a href="/cves">
+
+            <i class="bi bi-shield-lock"></i>
+
+            CVEs
+
+        </a>
+
+        <a href="/articles">
+
+            <i class="bi bi-newspaper"></i>
+
+            Articles
+
+        </a>
+
+        <div class="footer">
+
+            <hr>
+
+            <p>
+
+                Cyber Threat Analyzer
+
+            </p>
+
+            <p>
+
+                Version 1.0
+
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- Content -->
+
+    <div class="content">
+
+        {% block content %}
+        {% endblock %}
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

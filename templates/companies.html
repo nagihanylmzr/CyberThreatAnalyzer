@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h1 class="mb-4 fw-bold">
+    🏢 Companies
+</h1>
+
+<div class="card shadow">
+
+    <div class="card-header bg-dark text-white">
+        Top Mentioned Companies
+    </div>
+
+    <div class="table-responsive">
+
+        <table class="table table-hover table-striped mb-0">
+
+            <thead class="table-dark">
+
+                <tr>
+
+                    <th style="width:80px;">#</th>
+
+                    <th>Company</th>
+
+                    <th style="width:150px;">Mentions</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for company, count in companies %}
+
+                <tr>
+
+                    <td>{{ loop.index }}</td>
+
+                    <td>{{ company }}</td>
+
+                    <td>
+                        <span class="badge bg-primary">
+                            {{ count }}
+                        </span>
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+{% endblock %}

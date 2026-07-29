@@ -148,9 +148,3 @@ The application supports exporting:
 - Threat Intelligence API Integration
 
 ---
-
-# 👨‍💻 Developer
-
-**Nagihan Yılmaz**
-
-Cyber Threat Analyzer Project

@@ -6,18 +6,6 @@ The application provides an intuitive dashboard for monitoring cyber threats, vi
 
 ---
 
-# 📸 Screenshots
-
-> Add screenshots of the following pages after uploading them to the repository.
-
-- Dashboard
-- Companies
-- CVEs
-- Articles
-- Admin Panel
-
----
-
 # ✨ Features
 
 - 📊 Interactive Dashboard

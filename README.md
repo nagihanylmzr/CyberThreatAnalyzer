@@ -30,7 +30,6 @@ The application provides an intuitive dashboard for monitoring cyber threats, vi
 - ⚙️ Admin Panel
 - 📄 CSV Export
 - 📁 JSON Export
-- 🌙 Modern Dark Theme
 - 📱 Responsive Bootstrap Interface
 
 ---

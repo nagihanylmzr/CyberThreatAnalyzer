@@ -2,57 +2,121 @@
 
 {% block content %}
 
-<h1 class="mb-4 fw-bold">
-    🏢 Companies
-</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<div class="card shadow">
+    <div>
 
-    <div class="card-header bg-dark text-white">
-        Top Mentioned Companies
+        <span class="badge bg-primary mb-2">
+            COMPANY ANALYTICS
+        </span>
+
+        <h2 class="fw-bold text-white mb-1">
+            Top Mentioned Companies
+        </h2>
+
+        <p class="text-secondary mb-0">
+            Companies most frequently mentioned in cyber threat news.
+        </p>
+
     </div>
 
-    <div class="table-responsive">
+    <div class="text-end">
 
-        <table class="table table-hover table-striped mb-0">
+        <h3 class="fw-bold text-white">
+            {{ companies|length }}
+        </h3>
 
-            <thead class="table-dark">
+        <small class="text-secondary">
+            Companies Listed
+        </small>
 
-                <tr>
+    </div>
 
-                    <th style="width:80px;">#</th>
+</div>
 
-                    <th>Company</th>
 
-                    <th style="width:150px;">Mentions</th>
+<div class="card shadow border-0">
 
-                </tr>
+    <div class="card-body p-0">
 
-            </thead>
+        <div class="table-responsive">
 
-            <tbody>
+            <table class="table table-dark table-hover align-middle mb-0">
+
+                <thead>
+
+                    <tr>
+
+                        <th style="width:90px;">Rank</th>
+
+                        <th>Company</th>
+
+                        <th style="width:170px;">Mentions</th>
+
+                        <th style="width:260px;">Popularity</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% set max_count = companies[0][1] if companies else 1 %}
 
                 {% for company, count in companies %}
 
                 <tr>
 
-                    <td>{{ loop.index }}</td>
+                    <td>
 
-                    <td>{{ company }}</td>
+                        {% if loop.index == 1 %}
+                            🥇
+                        {% elif loop.index == 2 %}
+                            🥈
+                        {% elif loop.index == 3 %}
+                            🥉
+                        {% else %}
+                            {{ loop.index }}
+                        {% endif %}
+
+                    </td>
+
+                    <td class="fw-semibold">
+                        {{ company }}
+                    </td>
 
                     <td>
-                        <span class="badge bg-primary">
+
+                        <span class="badge bg-primary fs-6">
                             {{ count }}
                         </span>
+
+                    </td>
+
+                    <td>
+
+                        <div class="progress" style="height:8px;">
+
+                            <div
+                                class="progress-bar"
+                                role="progressbar"
+                                style="width: {{ (count / max_count * 100)|round(0) }}%;">
+
+                            </div>
+
+                        </div>
+
                     </td>
 
                 </tr>
 
                 {% endfor %}
 
-            </tbody>
+                </tbody>
 
-        </table>
+            </table>
+
+        </div>
 
     </div>
 

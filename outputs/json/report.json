@@ -1,42 +1,128 @@
-[
-    {
-        "company": "Microsoft",
-        "count": 6
-    },
-    {
-        "company": "SonicWall",
-        "count": 3
-    },
-    {
-        "company": "Cloudflare",
-        "count": 2
-    },
-    {
-        "company": "Google",
-        "count": 2
-    },
-    {
-        "company": "Slack",
-        "count": 1
-    },
-    {
-        "company": "Proofpoint",
-        "count": 1
-    },
-    {
-        "company": "GitHub",
-        "count": 1
-    },
-    {
-        "company": "Discord",
-        "count": 1
-    },
-    {
-        "company": "Fortinet",
-        "count": 1
-    },
-    {
-        "company": "Trend Micro",
-        "count": 1
-    }
-]
+{
+    "top_companies": [
+        [
+            "Microsoft",
+            6
+        ],
+        [
+            "SonicWall",
+            3
+        ],
+        [
+            "Google",
+            2
+        ],
+        [
+            "Cloudflare",
+            2
+        ],
+        [
+            "Trend Micro",
+            1
+        ],
+        [
+            "Slack",
+            1
+        ],
+        [
+            "Proofpoint",
+            1
+        ],
+        [
+            "GitHub",
+            1
+        ],
+        [
+            "Fortinet",
+            1
+        ],
+        [
+            "Discord",
+            1
+        ]
+    ],
+    "top_cves": [
+        [
+            "CVE-2025-66376",
+            3
+        ],
+        [
+            "CVE-2026-8496",
+            1
+        ],
+        [
+            "CVE-2026-58593",
+            1
+        ],
+        [
+            "CVE-2026-55255",
+            1
+        ],
+        [
+            "CVE-2026-50751",
+            1
+        ],
+        [
+            "CVE-2026-48294",
+            1
+        ],
+        [
+            "CVE-2026-4681",
+            1
+        ],
+        [
+            "CVE-2026-46331",
+            1
+        ],
+        [
+            "CVE-2026-43503",
+            1
+        ],
+        [
+            "CVE-2026-43500",
+            1
+        ]
+    ],
+    "top_risk_news": [
+        [
+            "Check Point warns of SmartConsole zero-day exploited in attacks",
+            27
+        ],
+        [
+            "New InfraTrust report reveals infrastructure flaws admins should patch first",
+            27
+        ],
+        [
+            "Russian hackers exploit Zimbra zero-click flaw for email theft",
+            24
+        ],
+        [
+            "Fake Notepad++ Plugin Delivers MATCHBOIL.V2 in UAC-0099 Attacks",
+            23
+        ],
+        [
+            "CISA orders urgent action on actively exploited Langflow RCE flaw",
+            22
+        ],
+        [
+            "Clop ransomware targets Windchill, FlexPLM in data theft attacks",
+            20
+        ],
+        [
+            "South Korea discloses data breach impacting diplomats worldwide",
+            20
+        ],
+        [
+            "How enterprise GenAI can amplify ransomware risk \u2014 and how to contain it",
+            20
+        ],
+        [
+            "New Dolphin X malware uses AI to rank high-value targets",
+            19
+        ],
+        [
+            "Adobe Chrome extension flaw let sites access private WhatsApp chats",
+            19
+        ]
+    ]
+}

@@ -147,10 +147,42 @@ class DatabaseManager:
 
     def get_articles_summary(self):
         self.cursor.execute("""
-            SELECT title, source, risk_score
+            SELECT title, source, url, risk_score
             FROM articles
             ORDER BY risk_score DESC
         """)
+
+        return self.cursor.fetchall()
+
+    def search_articles(self, keyword="", risk="all"):
+
+        query = """
+            SELECT title, source, url, risk_score
+            FROM articles
+            WHERE
+                (title LIKE ?
+                OR source LIKE ?
+                OR content LIKE ?)
+        """
+
+        params = [
+            f"%{keyword}%",
+            f"%{keyword}%",
+            f"%{keyword}%"
+        ]
+
+        if risk == "high":
+            query += " AND risk_score >= 20"
+
+        elif risk == "medium":
+            query += " AND risk_score >= 10 AND risk_score < 20"
+
+        elif risk == "low":
+            query += " AND risk_score < 10"
+
+        query += " ORDER BY risk_score DESC"
+
+        self.cursor.execute(query, params)
 
         return self.cursor.fetchall()
     def close(self):

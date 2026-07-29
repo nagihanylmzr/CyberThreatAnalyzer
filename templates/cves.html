@@ -2,59 +2,123 @@
 
 {% block content %}
 
-<h1 class="mb-4 fw-bold">
-    🛡 CVEs
-</h1>
+<div class="d-flex justify-content-between align-items-center mb-4">
 
-<p class="text-secondary mb-4">
-    CVEs extracted from collected cyber security news.
-</p>
+    <div>
 
-<div class="card shadow">
+        <span class="badge bg-danger mb-2">
+            VULNERABILITY ANALYTICS
+        </span>
 
-    <div class="card-header bg-dark text-white">
-        Top CVEs
+        <h2 class="fw-bold text-white mb-1">
+            Top Mentioned CVEs
+        </h2>
+
+        <p class="text-secondary mb-0">
+            Most frequently referenced vulnerabilities in cyber threat articles.
+        </p>
+
     </div>
 
-    <div class="table-responsive">
+    <div class="text-end">
 
-        <table class="table table-hover table-striped mb-0">
+        <h3 class="fw-bold text-white">
+            {{ cves|length }}
+        </h3>
 
-            <thead class="table-dark">
+        <small class="text-secondary">
+            CVEs Listed
+        </small>
 
-            <tr>
+    </div>
 
-                <th width="80">#</th>
-                <th>CVE ID</th>
-                <th width="140">Mentions</th>
+</div>
 
-            </tr>
 
-            </thead>
+<div class="card shadow border-0">
 
-            <tbody>
+    <div class="card-body p-0">
 
-            {% for cve, count in cves %}
+        <div class="table-responsive">
 
-            <tr>
+            <table class="table table-dark table-hover align-middle mb-0">
 
-                <td>{{ loop.index }}</td>
+                <thead>
 
-                <td>{{ cve }}</td>
+                    <tr>
 
-                <td>
-                    <span class="badge bg-danger">
-                        {{ count }}
-                    </span>
-                </td>
+                        <th style="width:90px;">Rank</th>
 
-            </tr>
+                        <th>CVE ID</th>
 
-            {% endfor %}
+                        <th style="width:170px;">Mentions</th>
 
-            </tbody>
+                        <th style="width:260px;">Frequency</th>
 
-        </table>
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% set max_count = cves[0][1] if cves else 1 %}
+
+                {% for cve, count in cves %}
+
+                <tr>
+
+                    <td>
+
+                        {% if loop.index == 1 %}
+                            🥇
+                        {% elif loop.index == 2 %}
+                            🥈
+                        {% elif loop.index == 3 %}
+                            🥉
+                        {% else %}
+                            {{ loop.index }}
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+                        <span class="fw-semibold text-info">
+                            {{ cve }}
+                        </span>
+                    </td>
+
+                    <td>
+
+                        <span class="badge bg-danger fs-6">
+                            {{ count }}
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <div class="progress" style="height:8px;">
+
+                            <div
+                                class="progress-bar bg-danger"
+                                role="progressbar"
+                                style="width: {{ (count / max_count * 100)|round(0) }}%;">
+
+                            </div>
+
+                        </div>
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
 
     </div>
 

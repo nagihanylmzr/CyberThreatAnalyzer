@@ -2,67 +2,440 @@
 
 {% block content %}
 
-<h1 class="mb-4 fw-bold">
-    🛡 Cyber Threat Analyzer Dashboard
-</h1>
+<div class="container-fluid">
 
-<!-- Statistics Cards -->
+    <!-- =========================
+         Header
+    ========================== -->
+
+    <div class="d-flex justify-content-between align-items-center mb-4">
+
+        <div>
+
+            <span class="badge bg-primary px-3 py-2 mb-2">
+
+                LIVE DASHBOARD
+
+            </span>
+
+            <h2 class="fw-bold text-white mb-1">
+
+                Cyber Threat Intelligence
+
+            </h2>
+
+            <p class="text-secondary mb-0">
+
+                Monitor cyber threats, companies and vulnerabilities in real time.
+
+            </p>
+
+        </div>
+
+        <div class="text-end">
+
+            <small class="text-secondary">
+
+                Last Update
+
+            </small>
+
+            <h5 class="text-white mb-2">
+
+                {{ current_date }}
+
+            </h5>
+
+            <span class="badge bg-success">
+
+                🟢 System Online
+
+            </span>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         System Status
+    ========================== -->
+
+    <div class="row g-4 mb-4">
+
+        <div class="col-lg-3">
+
+            <div class="card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-database-check fs-1 text-success"></i>
+
+                    <h6 class="mt-3 text-white">
+
+                        Database
+
+                    </h6>
+
+                    <span class="badge bg-success">
+
+                        Healthy
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3">
+
+            <div class="card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-shield-check fs-1 text-primary"></i>
+
+                    <h6 class="mt-3 text-white">
+
+                        CVE Monitoring
+
+                    </h6>
+
+                    <span class="badge bg-primary">
+
+                        Active
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3">
+
+            <div class="card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-newspaper fs-1 text-warning"></i>
+
+                    <h6 class="mt-3 text-white">
+
+                        News Feed
+
+                    </h6>
+
+                    <span class="badge bg-warning text-dark">
+
+                        Live
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="col-lg-3">
+
+            <div class="card h-100">
+
+                <div class="card-body text-center">
+
+                    <i class="bi bi-activity fs-1 text-danger"></i>
+
+                    <h6 class="mt-3 text-white">
+
+                        Threat Level
+
+                    </h6>
+
+                    <span class="badge bg-danger">
+
+                        HIGH
+
+                    </span>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- =========================
+         Search
+    ========================== -->
+<div class="card mb-5">
+
+    <div class="card-body">
+
+        <form action="/articles" method="GET">
+
+            <div class="row align-items-center g-3">
+
+                <div class="col-lg-5">
+
+                    <input
+                        type="text"
+                        name="search"
+                        class="form-control"
+                        placeholder="🔍 Search threats, companies or CVEs...">
+
+                </div>
+
+                <div class="col-lg-3">
+
+                    <select
+                        name="risk"
+                        class="form-select">
+
+                        <option value="all">
+                            All Risks
+                        </option>
+
+                        <option value="high">
+                            High Risk
+                        </option>
+
+                        <option value="medium">
+                            Medium Risk
+                        </option>
+
+                        <option value="low">
+                            Low Risk
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <div class="col-lg-2 d-grid">
+
+                    <button
+                        type="submit"
+                        class="btn btn-primary">
+
+                        <i class="bi bi-search"></i>
+
+                        Search
+
+                    </button>
+
+                </div>
+
+                <div class="col-lg-2 d-grid">
+
+                    <a
+                        href="/export"
+                        class="btn btn-outline-primary">
+
+                        <i class="bi bi-download"></i>
+
+                        Export
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+
+<!-- =========================
+     Statistics Cards
+========================= -->
 
 <div class="row g-4 mb-5">
 
-    <div class="col-md-4">
+    <!-- Articles -->
 
-        <div class="card bg-primary text-white shadow h-100">
+    <div class="col-xl-3 col-md-6">
 
-            <div class="card-body">
+        <a href="/articles" class="text-decoration-none text-reset">
 
-                <h6 class="text-uppercase">Articles</h6>
+            <div class="card card-primary shadow h-100">
 
-                <h1 class="display-4">
+                <div class="card-body">
 
-                    {{ article_count }}
+                    <div class="d-flex justify-content-between align-items-center">
 
-                </h1>
+                        <div>
+
+                            <small class="text-secondary text-uppercase">
+
+                                Articles
+
+                            </small>
+
+                            <h1 class="display-5 fw-bold text-white mt-2">
+
+                                {{ article_count }}
+
+                            </h1>
+
+                            <small class="text-secondary">
+
+                                Total Articles
+
+                            </small>
+
+                        </div>
+
+                        <i class="bi bi-newspaper fs-1 text-primary"></i>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+        </a>
 
     </div>
 
-    <div class="col-md-4">
+    <!-- Companies -->
 
-        <div class="card bg-success text-white shadow h-100">
+    <div class="col-xl-3 col-md-6">
 
-            <div class="card-body">
+        <a href="/companies" class="text-decoration-none text-reset">
 
-                <h6 class="text-uppercase">Companies</h6>
+            <div class="card card-success shadow h-100">
 
-                <h1 class="display-4">
+                <div class="card-body">
 
-                    {{ company_count }}
+                    <div class="d-flex justify-content-between align-items-center">
 
-                </h1>
+                        <div>
+
+                            <small class="text-secondary text-uppercase">
+
+                                Companies
+
+                            </small>
+
+                            <h1 class="display-5 fw-bold text-white mt-2">
+
+                                {{ company_count }}
+
+                            </h1>
+
+                            <small class="text-secondary">
+
+                                Organizations
+
+                            </small>
+
+                        </div>
+
+                        <i class="bi bi-buildings fs-1 text-success"></i>
+
+                    </div>
+
+                </div>
 
             </div>
 
-        </div>
+        </a>
 
     </div>
 
-    <div class="col-md-4">
+    <!-- CVEs -->
 
-        <div class="card bg-danger text-white shadow h-100">
+    <div class="col-xl-3 col-md-6">
+
+        <a href="/cves" class="text-decoration-none text-reset">
+
+            <div class="card card-danger shadow h-100">
+
+                <div class="card-body">
+
+                    <div class="d-flex justify-content-between align-items-center">
+
+                        <div>
+
+                            <small class="text-secondary text-uppercase">
+
+                                CVEs
+
+                            </small>
+
+                            <h1 class="display-5 fw-bold text-white mt-2">
+
+                                {{ cve_count }}
+
+                            </h1>
+
+                            <small class="text-secondary">
+
+                                Vulnerabilities
+
+                            </small>
+
+                        </div>
+
+                        <i class="bi bi-shield-lock fs-1 text-danger"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </a>
+
+    </div>
+
+    <!-- Average Risk -->
+
+    <div class="col-xl-3 col-md-6">
+
+        <div class="card card-warning shadow h-100">
 
             <div class="card-body">
 
-                <h6 class="text-uppercase">CVEs</h6>
+                <div class="d-flex justify-content-between align-items-center">
 
-                <h1 class="display-4">
+                    <div>
 
-                    {{ cve_count }}
+                        <small class="text-secondary text-uppercase">
 
-                </h1>
+                            Avg Risk
+
+                        </small>
+
+                        <h1 class="display-5 fw-bold text-white mt-2">
+
+                            {{ average_risk }}
+
+                        </h1>
+
+                        <small class="text-secondary">
+
+                            Threat Score
+
+                        </small>
+
+                    </div>
+
+                    <i class="bi bi-fire fs-1 text-warning"></i>
+
+                </div>
 
             </div>
 
@@ -72,85 +445,241 @@
 
 </div>
 
-<!-- Top Lists -->
+<!-- =========================
+     Charts
+========================= -->
 
-<div class="row">
+<div class="row g-4 mb-5">
 
-    <div class="col-lg-6 mb-4">
+    <!-- Top Companies Chart -->
 
-        <div class="card shadow h-100">
+    <div class="col-lg-6">
 
-            <div class="card-header bg-dark text-white">
+        <div class="card h-100">
+
+            <div class="card-header">
+
+                📊 Top Companies
+
+            </div>
+
+            <div class="card-body" style="height:380px;">
+
+                <canvas id="companyChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+<!-- =========================
+     Quick Insights
+========================= -->
+
+<div class="card mb-5">
+
+    <div class="card-header">
+
+        <i class="bi bi-lightning-charge-fill text-warning"></i>
+
+        Quick Insights
+
+    </div>
+
+    <div class="card-body">
+
+        <div class="row g-3 text-center">
+
+            <div class="col-xl-3 col-lg-6 col-md-6">
+
+                <h6 class="text-secondary">
+
+                    🏢 Most Targeted
+
+                </h6>
+
+                <h4 class="fw-bold text-white">
+
+                    {{ top_company[0] }}
+
+                </h4>
+
+                <small class="text-secondary">
+
+                    {{ top_company[1] }} Articles
+
+                </small>
+
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6">
+
+                <h6 class="text-secondary">
+
+                    🛡 Most Common CVE
+
+                </h6>
+
+                <h5 class="fw-bold text-white">
+
+                    {{ top_cve[0] }}
+
+                </h5>
+
+                <small class="text-secondary">
+
+                    {{ top_cve[1] }} Mentions
+
+                </small>
+
+            </div>
+<div class="row g-4 mb-5">
+
+    <!-- Top Companies -->
+
+    <div class="col-lg-6">
+
+        <div class="card h-100">
+
+            <div class="card-header">
 
                 🏢 Top Companies
 
             </div>
 
-            <ul class="list-group list-group-flush">
+            <div class="card-body p-0">
 
-                {% for company, count in top_companies %}
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {% for company, count in top_companies %}
 
-                    {{ company }}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
 
-                    <span class="badge bg-primary rounded-pill">
+                        {{ company }}
 
-                        {{ count }}
+                        <span class="badge bg-primary rounded-pill">
 
-                    </span>
+                            {{ count }}
 
-                </li>
+                        </span>
 
-                {% endfor %}
+                    </li>
 
-            </ul>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
 
         </div>
 
     </div>
 
-    <div class="col-lg-6 mb-4">
+    <!-- Top CVEs -->
 
-        <div class="card shadow h-100">
+    <div class="col-lg-6">
 
-            <div class="card-header bg-dark text-white">
+        <div class="card h-100">
+
+            <div class="card-header">
 
                 🛡 Top CVEs
 
             </div>
 
-            <ul class="list-group list-group-flush">
+            <div class="card-body p-0">
 
-                {% for cve, count in top_cves %}
+                <ul class="list-group list-group-flush">
 
-                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    {% for cve, count in top_cves %}
 
-                    {{ cve }}
+                    <li class="list-group-item d-flex justify-content-between align-items-center">
 
-                    <span class="badge bg-danger rounded-pill">
+                        {{ cve }}
 
-                        {{ count }}
+                        <span class="badge bg-danger rounded-pill">
 
-                    </span>
+                            {{ count }}
 
-                </li>
+                        </span>
 
-                {% endfor %}
+                    </li>
 
-            </ul>
+                    {% endfor %}
+
+                </ul>
+
+            </div>
 
         </div>
 
     </div>
 
 </div>
+           <div class="col-xl-3 col-lg-6 col-md-6">
 
-<!-- Highest Risk News -->
+                <h6 class="text-secondary">
 
-<div class="card shadow">
+                    🔥 Highest Risk
 
-    <div class="card-header bg-dark text-white">
+                </h6>
+
+                <h2 class="text-danger fw-bold">
+
+                    {{ highest_risk }}
+
+                </h2>
+
+            </div>
+
+            <div class="col-xl-3 col-lg-6 col-md-6">
+
+                <h6 class="text-secondary">
+
+                    📄 Articles
+
+                </h6>
+
+                <h2 class="text-primary fw-bold">
+
+                    {{ article_count }}
+
+                </h2>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+    <!-- Top CVEs Chart -->
+
+    <div class="col-lg-6">
+
+        <div class="card h-100">
+
+            <div class="card-header">
+
+                🛡 Top CVEs
+
+            </div>
+
+            <div class="card-body" style="height:380px;">
+
+                <canvas id="cveChart"></canvas>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+<div class="card mb-5">
+
+    <div class="card-header">
 
         🚨 Highest Risk News
 
@@ -158,49 +687,65 @@
 
     <div class="table-responsive">
 
-        <table class="table table-striped table-hover mb-0">
+        <table class="table table-hover align-middle mb-0">
 
             <thead class="table-dark">
 
-            <tr>
+                <tr>
 
-                <th style="width:120px;">Risk</th>
+                    <th width="120">Risk</th>
 
-                <th>Article</th>
+                    <th>Article</th>
 
-            </tr>
+                </tr>
 
             </thead>
 
             <tbody>
 
-            {% for title, score in top_risk %}
+                {% for title, score in top_risk %}
 
-            <tr>
+                <tr>
 
-                <td>
+                    <td>
 
-                    {% if score >= 21 %}
+                        {% if score >= 21 %}
 
-                        <span class="badge bg-danger">{{ score }}</span>
+                            <span class="badge bg-danger">
 
-                    {% elif score >= 11 %}
+                                {{ score }}
 
-                        <span class="badge bg-warning text-dark">{{ score }}</span>
+                            </span>
 
-                    {% else %}
+                        {% elif score >= 11 %}
 
-                        <span class="badge bg-success">{{ score }}</span>
+                            <span class="badge bg-warning text-dark">
 
-                    {% endif %}
+                                {{ score }}
 
-                </td>
+                            </span>
 
-                <td>{{ title }}</td>
+                        {% else %}
 
-            </tr>
+                            <span class="badge bg-success">
 
-            {% endfor %}
+                                {{ score }}
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <td>
+
+                        {{ title }}
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
 
             </tbody>
 
@@ -209,5 +754,134 @@
     </div>
 
 </div>
+{% endblock %}
+
+{% block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+
+// =====================
+// Top Companies Chart
+// =====================
+
+new Chart(document.getElementById("companyChart"), {
+
+    type: "bar",
+
+    data: {
+
+        labels: {{ company_labels | tojson }},
+
+        datasets: [{
+
+            label: "Company Mentions",
+
+            data: {{ company_counts | tojson }},
+
+            backgroundColor: [
+                "#0d6efd",
+                "#198754",
+                "#dc3545",
+                "#ffc107",
+                "#6610f2",
+                "#20c997",
+                "#fd7e14",
+                "#6c757d",
+                "#0dcaf0",
+                "#d63384"
+            ],
+
+            borderRadius: 8
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                display: false
+
+            }
+
+        },
+
+        scales: {
+
+            y: {
+
+                beginAtZero: true
+
+            }
+
+        }
+
+    }
+
+});
+
+// =====================
+// Top CVEs Chart
+// =====================
+
+new Chart(document.getElementById("cveChart"), {
+
+    type: "doughnut",
+
+    data: {
+
+        labels: {{ cve_labels | tojson }},
+
+        datasets: [{
+
+            data: {{ cve_counts | tojson }},
+
+            backgroundColor: [
+                "#dc3545",
+                "#0d6efd",
+                "#198754",
+                "#ffc107",
+                "#6610f2",
+                "#20c997",
+                "#fd7e14",
+                "#6c757d",
+                "#0dcaf0",
+                "#d63384"
+            ]
+
+        }]
+
+    },
+
+    options: {
+
+        responsive: true,
+
+        maintainAspectRatio: false,
+
+        plugins: {
+
+            legend: {
+
+                position: "right"
+
+            }
+
+        }
+
+    }
+
+});
+
+</script>
 
 {% endblock %}

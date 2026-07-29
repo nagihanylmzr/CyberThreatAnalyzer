@@ -1,7 +1,6 @@
 import csv
 import json
 from pathlib import Path
-from collections import Counter
 
 import matplotlib.pyplot as plt
 
@@ -28,30 +27,33 @@ class ReportGenerator:
     # ==================================================
 
     def top_companies(self, limit=10):
-
         return self.database.get_company_statistics()[:limit]
 
     def top_cves(self, limit=10):
-
         return self.database.get_cve_statistics()[:limit]
 
     def top_risk_news(self, limit=10):
-
         return self.database.get_top_risk_news(limit)
 
-    def articles(self):
+    def articles(self, keyword="", risk="all"):
+
+        if keyword or risk != "all":
+            return self.database.search_articles(keyword, risk)
 
         return self.database.get_articles_summary()
+
     # ==================================================
     # Export Reports
     # ==================================================
 
     def export_companies_csv(self):
 
-        results = self.top_companies()
+        results = self.database.get_company_statistics()
+
+        output_file = self.csv_dir / "top_companies.csv"
 
         with open(
-            self.csv_dir / "top_companies.csv",
+            output_file,
             "w",
             newline="",
             encoding="utf-8"
@@ -60,15 +62,18 @@ class ReportGenerator:
             writer = csv.writer(file)
 
             writer.writerow(["Company", "Mentions"])
-
             writer.writerows(results)
+
+        return output_file
 
     def export_cves_csv(self):
 
-        results = self.top_cves()
+        results = self.database.get_cve_statistics()
+
+        output_file = self.csv_dir / "top_cves.csv"
 
         with open(
-            self.csv_dir / "top_cves.csv",
+            output_file,
             "w",
             newline="",
             encoding="utf-8"
@@ -77,15 +82,18 @@ class ReportGenerator:
             writer = csv.writer(file)
 
             writer.writerow(["CVE", "Mentions"])
-
             writer.writerows(results)
+
+        return output_file
 
     def export_risk_csv(self):
 
         results = self.top_risk_news()
 
+        output_file = self.csv_dir / "top_risk_news.csv"
+
         with open(
-            self.csv_dir / "top_risk_news.csv",
+            output_file,
             "w",
             newline="",
             encoding="utf-8"
@@ -98,6 +106,8 @@ class ReportGenerator:
             for title, score in results:
                 writer.writerow([score, title])
 
+        return output_file
+
     def export_json(self):
 
         data = {
@@ -106,13 +116,21 @@ class ReportGenerator:
             "top_risk_news": self.top_risk_news()
         }
 
+        output_file = self.json_dir / "report.json"
+
         with open(
-            self.json_dir / "report.json",
+            output_file,
             "w",
             encoding="utf-8"
         ) as file:
 
             json.dump(data, file, indent=4)
+
+        return output_file
+
+    # ==================================================
+    # Charts
+    # ==================================================
 
     def export_company_chart(self):
 
@@ -136,10 +154,17 @@ class ReportGenerator:
 
         plt.tight_layout()
 
-        plt.savefig(self.chart_dir / "top_companies.png")
+        output_file = self.chart_dir / "top_companies.png"
+
+        plt.savefig(output_file)
 
         plt.close()
 
-    def close(self):
+        return output_file
 
+    # ==================================================
+    # Close Connection
+    # ==================================================
+
+    def close(self):
         self.database.close()
